@@ -18,6 +18,15 @@ public class LoginPage extends PageObject {
     @FindBy(xpath = "//*[@id=\"login-button\"]")
     WebElement ButtonLogin;
 
+    @FindBy(xpath = "//*[@id=\"user-name\"]")
+    WebElement InvalidUsername;
+
+    @FindBy(xpath = "//*[@id=\"password\"]")
+    WebElement InvalidPassword;
+
+    @FindBy(xpath = "//*[@id=\"login_button_container\"]/div/form/div[3]/h3")
+    WebElement ErrorMassage;
+
     public void InputUsername(){
         fieldUsername.sendKeys("standard_user");
     }
@@ -28,5 +37,17 @@ public class LoginPage extends PageObject {
 
     public void clickLoginButton(){
         ButtonLogin.click();
+    }
+
+    public void inputInvalidUsername(){
+        InvalidUsername.sendKeys("hiimah");
+    }
+
+    public void inputInvalidPassword(){
+        InvalidPassword.sendKeys("hiimah1234");
+    }
+
+    public void verifyErrorMassage(){
+        ErrorMassage.isDisplayed();
     }
 }

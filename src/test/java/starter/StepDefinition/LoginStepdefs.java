@@ -39,4 +39,19 @@ public class LoginStepdefs {
     public void theSystemShowProductsPages() {
         loginStep.verifyProductPage();
     }
+
+    @When("I input invalid username")
+    public void iInputInvalidUsername() {
+        loginStep.inputInvalidUsername();
+    }
+
+    @And("I input invalid password")
+    public void iInputInvalidPassword() {
+        loginStep.inputInvalidPassword();
+    }
+
+    @Then("error massage appear")
+    public void errorMassageAppear() {
+        loginStep.verifyErrorMassage();
+    }
 }

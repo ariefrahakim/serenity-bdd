@@ -34,6 +34,17 @@ public class LoginStep {
     public void verifyProductPage(){
         String headerProductPage = productPage.getHeaderProductPage();
         assertTrue(headerProductPage.equalsIgnoreCase("products"));
+    }
 
+    public void inputInvalidUsername(){
+        loginPage.inputInvalidUsername();
+    }
+
+    public void inputInvalidPassword(){
+        loginPage.inputInvalidPassword();
+    }
+
+    public void verifyErrorMassage(){
+        loginPage.verifyErrorMassage();
     }
 }
