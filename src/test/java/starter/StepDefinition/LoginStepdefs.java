@@ -54,4 +54,12 @@ public class LoginStepdefs {
     public void errorMassageAppear() {
         loginStep.verifyErrorMassage();
     }
+
+    @Given("User already login")
+    public void userAlreadyLogin() {
+        loginStep.openLoginPage();
+        loginStep.InputUsername();
+        loginStep.InputPassword();
+        loginStep.clickLoginButton();
+    }
 }

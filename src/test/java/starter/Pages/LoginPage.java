@@ -47,7 +47,7 @@ public class LoginPage extends PageObject {
         InvalidPassword.sendKeys("hiimah1234");
     }
 
-    public void verifyErrorMassage(){
-        ErrorMassage.isDisplayed();
+    public Boolean verifyErrorMassage(){
+        return ErrorMassage.isDisplayed();
     }
 }

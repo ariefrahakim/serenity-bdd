@@ -45,6 +45,6 @@ public class LoginStep {
     }
 
     public void verifyErrorMassage(){
-        loginPage.verifyErrorMassage();
+        assertTrue(loginPage.verifyErrorMassage());
     }
 }
