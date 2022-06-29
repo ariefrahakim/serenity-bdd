@@ -24,6 +24,9 @@ public class LoginPage extends PageObject {
     @FindBy(xpath = "//*[@id=\"password\"]")
     WebElement InvalidPassword;
 
+    @FindBy(xpath ="//*[@id=\"user-name\"]")
+    WebElement LockedAcc;
+
     @FindBy(xpath = "//*[@id=\"login_button_container\"]/div/form/div[3]/h3")
     WebElement ErrorMassage;
 
@@ -40,11 +43,15 @@ public class LoginPage extends PageObject {
     }
 
     public void inputInvalidUsername(){
-        InvalidUsername.sendKeys("hiimah");
+        InvalidUsername.sendKeys("nshmahira");
     }
 
     public void inputInvalidPassword(){
-        InvalidPassword.sendKeys("hiimah1234");
+        InvalidPassword.sendKeys("40199");
+    }
+
+    public void inputValidAnotherAcc(){
+        LockedAcc.sendKeys("locked_out_user");
     }
 
     public Boolean verifyErrorMassage(){

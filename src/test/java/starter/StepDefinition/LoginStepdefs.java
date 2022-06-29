@@ -15,22 +15,22 @@ public class LoginStepdefs {
     @Steps
     LoginStep loginStep;
 
-    @Given("I already on login page")
+    @Given("user already on login page")
     public void iAlreadyOnLoginPage() {
         loginStep.openLoginPage();
     }
 
-    @When("I input my username")
+    @When("user input valid username")
     public void iInputMyUsername() {
         loginStep.InputUsername();
     }
 
-    @And("I input my password")
+    @And("user input valid password")
     public void iInputMyPassword() {
         loginStep.InputPassword();
     }
 
-    @And("I click login button")
+    @And("user click login button")
     public void iClickLoginButton() {
         loginStep.clickLoginButton();
     }
@@ -40,12 +40,12 @@ public class LoginStepdefs {
         loginStep.verifyProductPage();
     }
 
-    @When("I input invalid username")
+    @When("user input invalid username")
     public void iInputInvalidUsername() {
         loginStep.inputInvalidUsername();
     }
 
-    @And("I input invalid password")
+    @And("user input invalid password")
     public void iInputInvalidPassword() {
         loginStep.inputInvalidPassword();
     }
@@ -53,6 +53,12 @@ public class LoginStepdefs {
     @Then("error massage appear")
     public void errorMassageAppear() {
         loginStep.verifyErrorMassage();
+    }
+
+    @When("user input valid another username")
+    public void userInputValidAnotherUsername() {
+        loginStep.inputValidAnotherAcc();
+
     }
 
     @Given("User already login")
