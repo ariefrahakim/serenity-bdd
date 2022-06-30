@@ -10,6 +10,10 @@ import org.openqa.selenium.support.FindBy;
 public class CartPage extends PageObject {
     WebElement idProduct;
     WebElement differentIdProduct;
+
+    @FindBy(xpath = "//*[@id=\"checkout\"]")
+    WebElement Checkoutbutton;
+
     public Boolean getDisplayedProduct(){
         idProduct = getDriver().findElement(By.xpath("//*[text()=\""+ProductPage.nameProduct+"\"]"));
         return idProduct.isDisplayed();
@@ -17,5 +21,9 @@ public class CartPage extends PageObject {
     public Boolean getDisplayedDifferentProduct(int z){
         differentIdProduct = getDriver().findElement(By.xpath("//*[text()=\""+ProductPage.differentProduct.get(z)+"\"]"));
         return differentIdProduct.isDisplayed();
+    }
+
+    public void clickCheckoutButton(){
+        Checkoutbutton.click();
     }
 }
