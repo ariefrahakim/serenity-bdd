@@ -15,19 +15,6 @@ Feature: Add to Cart
       | Sauce Labs Backpack   |
       | Sauce Labs Onesie     |
 
-  @SingleProduct
-  Scenario Outline: User add to Cart on Product Page
-    Given User already login
-    When User click add to cart button to selected product with name "<products>"
-    Then Cart button changed to remove button
-    When User click cart page
-    Then selected product appear on cart page
-    Examples:
-      | products              |
-      | Sauce Labs Bike Light |
-      | Sauce Labs Backpack   |
-      | Sauce Labs Onesie     |
-
   @MultipleProduct
   Scenario Outline: User Add to Cart Multiple Product on Detail Product
     Given User already login
@@ -51,6 +38,20 @@ Feature: Add to Cart
       | product1                | product2                 | product3                          |
       | Sauce Labs Bike Light   | Sauce Labs Backpack      | Sauce Labs Onesie                 |
       | Sauce Labs Bolt T-Shirt | Sauce Labs Fleece Jacket | Test.allTheThings() T-Shirt (Red) |
+
+  @SingleProduct
+  Scenario Outline: User add to Cart on Product Page
+    Given User already login
+    When User click add to cart button to selected product with name "<products>"
+    Then Cart button changed to remove button
+    When User click cart page
+    Then selected product appear on cart page
+    Examples:
+      | products              |
+      | Sauce Labs Bike Light |
+      | Sauce Labs Backpack   |
+      | Sauce Labs Onesie     |
+
 
   @MultipleProducts
   Scenario Outline: User add to Cart on Product Page

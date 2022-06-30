@@ -81,18 +81,22 @@ public class AddToCartStepdefs {
 
     @And("User already add to cart selected product with name {string}")
     public void userAlreadyAddToCartSelectedProductWithName(String name) {
-        addToCartStep.clickDetailProduct(name);
-        addToCartStep.isButtonCartDisplayed();
-        addToCartStep.clickAddToCartButton();
+        addToCartStep.addToCartButtonProductPage(name);
     }
 
     @And("User already on cart page")
     public void userAlreadyOnCartPage() {
         addToCartStep.clickCartPage();
+        addToCartStep.verifyCartPage();
     }
 
     @When("User click checkout button")
     public void userClickCheckoutButton() {
         addToCartStep.clickCheckoutButton();
+    }
+
+    @And("User already add to cart selected different product with name {string}")
+    public void userAlreadyAddToCartSelectedDifferentProductWithName(String name) {
+        addToCartStep.verifyCartDifProductPage(name);
     }
 }

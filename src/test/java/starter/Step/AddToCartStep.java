@@ -53,13 +53,13 @@ public class AddToCartStep {
 
     @Step
     public void verifyCartPage(){
-        Boolean temp = false;
         assertTrue(cartPage.getDisplayedProduct());
         if(ProductPage.differentProduct.size() != 0) {
             for (int i=0; i<ProductPage.differentProduct.size(); i++){
                 assertTrue(cartPage.getDisplayedDifferentProduct(i));
             }
         }
+        cartPage.getPriceCartPage();
     }
 
 

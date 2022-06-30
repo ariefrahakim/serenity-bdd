@@ -16,19 +16,19 @@ public class CheckoutStepdefs {
         checkoutStep.verifyYourInformationPage();
     }
 
-    @When("User input first name field")
-    public void userInputFirstNameField() {
-        checkoutStep.inputFirstName();
+    @When("User input first name field with {string}")
+    public void userInputFirstNameField(String first) {
+        checkoutStep.inputFirstName(first);
     }
 
-    @And("user input last name field")
-    public void userInputLastNameField() {
-        checkoutStep.inputLastName();
+    @And("user input last name field with {string}")
+    public void userInputLastNameField(String last) {
+        checkoutStep.inputLastName(last);
     }
 
-    @And("user input zip or postal code")
-    public void userInputZipOrPostalCode() {
-        checkoutStep.inputPostalCode();
+    @And("user input zip or postal code with {int}")
+    public void userInputZipOrPostalCode(int post) {
+        checkoutStep.inputPostalCode(post);
     }
 
     @When("User not fill first name field")
@@ -52,6 +52,7 @@ public class CheckoutStepdefs {
     @Then("the Checkout information page appear")
     public void theCheckoutInformationPageAppear() {
         checkoutStep.getHeaderOverviewPage();
+        checkoutStep.verifyCheckoutPage();
     }
 
     @Then("error massage appear on your information page")
