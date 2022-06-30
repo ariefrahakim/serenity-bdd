@@ -15,7 +15,7 @@ Feature: Login to Saucedemo.com
     And user input invalid password
     And user click login button
     Then error massage appear
-
+    
   @FailedLogin2
   Scenario: Failed Login With invalid username
     Given user already on login page
@@ -39,3 +39,4 @@ Feature: Login to Saucedemo.com
     And user input valid password
     And user click login button
     Then error massage appear
+
