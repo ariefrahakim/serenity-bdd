@@ -105,4 +105,8 @@ public class AddToCartStep {
         productPage.AddToCartButton();
     }
 
+    @Step
+    public void clickCheckoutButton() {
+        cartPage.clickCheckoutButton();
+    }
 }
