@@ -44,6 +44,11 @@ public class LoginStep {
         loginPage.inputInvalidPassword();
     }
 
+    @Step
+    public void inputValidAnotherAcc(){
+        loginPage.inputValidAnotherAcc();
+    }
+
     public void verifyErrorMassage(){
         assertTrue(loginPage.verifyErrorMassage());
     }
