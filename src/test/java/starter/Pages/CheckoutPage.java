@@ -1,13 +1,21 @@
 package starter.Pages;
 
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-@DefaultUrl("https://www.saucedemo.com/checkout-step-one.html")
+import java.util.ArrayList;
+import java.util.List;
+
 public class CheckoutPage extends PageObject {
+
+    List<Double> listPriceCheckout = new ArrayList<>();
+
+    @FindBy(className = "inventory_item_price")
+    List<WebElementFacade> priceCheckout;
 
     @FindBy(xpath = "//*[@id=\"header_container\"]/div[2]/span")
     WebElement YourInformationPage;
@@ -43,16 +51,16 @@ public class CheckoutPage extends PageObject {
         return YourInformationPage.getText();
     }
 
-    public void inputFirstName() {
-        FistNameField.sendKeys("Olive");
+    public void inputFirstName(String first) {
+        FistNameField.sendKeys(first);
     }
 
-    public void inputLastName() {
-        LastNameField.sendKeys("Jhonsen");
+    public void inputLastName(String last) {
+        LastNameField.sendKeys(last);
     }
 
-    public void inputPostalCode() {
-        PostalCodeField.sendKeys("443228");
+    public void inputPostalCode(int post) {
+        PostalCodeField.sendKeys(String.valueOf(post));
     }
 
     public void emptyFirstNameField() {
@@ -77,6 +85,13 @@ public class CheckoutPage extends PageObject {
 
     public Boolean verifyErrorMassageInformation(){
         return ErrorMassageInformation.isDisplayed();
+    }
+
+    public List<Double> verifyPriceCheckout(){
+        for (WebElementFacade p : priceCheckout){
+            listPriceCheckout.add(Double.valueOf(p.getText().replaceAll("\\$","")));
+        }
+        return listPriceCheckout;
     }
 }
 
