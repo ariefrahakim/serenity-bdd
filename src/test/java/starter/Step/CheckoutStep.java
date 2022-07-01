@@ -5,6 +5,8 @@ import starter.Pages.CartPage;
 import starter.Pages.CheckoutPage;
 import starter.Pages.ProductPage;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class CheckoutStep {
@@ -58,6 +60,7 @@ public class CheckoutStep {
         assertTrue(headerPage.equalsIgnoreCase("CHECKOUT: OVERVIEW"));
     }
 
+    @Step
     public void verifyCheckoutPage(){
         assertTrue(cartPage.getDisplayedProduct());
         for (int i=0; i<ProductPage.differentProduct.size(); i++){
@@ -66,7 +69,29 @@ public class CheckoutStep {
         assertEquals(checkoutPage.verifyPriceCheckout(), CartPage.priceProduct);
     }
 
+    @Step
     public void verifyErrorMassageInformation() {
         assertTrue(checkoutPage.verifyErrorMassageInformation());
+    }
+
+    @Step
+    public void verifySummaryPayment(){
+        assertTrue(checkoutPage.verifyPaymentInformation());
+        double expectedItemTotal = 0;
+        for (int i=0; i<CartPage.priceProduct.size(); i++){
+            expectedItemTotal += CartPage.priceProduct.get(i);
+        }
+        double actualItemTotal = Double.parseDouble(checkoutPage.getItemTotal().replaceAll("Item total: \\$", ""));
+        assertEquals(String.valueOf(expectedItemTotal), String.valueOf(actualItemTotal));
+        assertTrue(checkoutPage.verifyShippingInformation());
+        double tax = Double.parseDouble(checkoutPage.getTax().replaceAll("Tax: \\$", ""));
+        String sumTotal = checkoutPage.sumTotal().replaceAll("Total: \\$", "");
+        double expectedSumTotal = actualItemTotal + tax;
+        assertEquals(String.valueOf(expectedSumTotal), sumTotal);
+    }
+
+    @Step
+    public void clickFinishButton(){
+        checkoutPage.clickFinishButton();
     }
 }

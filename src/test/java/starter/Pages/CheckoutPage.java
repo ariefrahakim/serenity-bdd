@@ -47,6 +47,24 @@ public class CheckoutPage extends PageObject {
     @FindBy(xpath = "//*[@id=\"checkout_info_container\"]/div/form/div[1]/div[4]")
     WebElement ErrorMassageInformation;
 
+    @FindBy(className = "summary_value_label")
+    WebElement paymentInformation;
+
+    @FindBy(className = "summary_subtotal_label")
+    WebElement itemTotal;
+
+    @FindBy(xpath = "//*[text()=\"FREE PONY EXPRESS DELIVERY!\"]")
+    WebElement shippingInformation;
+
+    @FindBy(className = "summary_tax_label")
+    WebElement tax;
+
+    @FindBy(className = "summary_total_label")
+    WebElement sumTotal;
+
+    @FindBy(id = "finish")
+    WebElement buttonFinish;
+
     public String getHeaderYourInformation() {
         return YourInformationPage.getText();
     }
@@ -93,5 +111,31 @@ public class CheckoutPage extends PageObject {
         }
         return listPriceCheckout;
     }
+
+    public Boolean verifyPaymentInformation(){
+        return paymentInformation.isDisplayed();
+    }
+
+    public String getItemTotal(){
+        return itemTotal.getText();
+    }
+
+    public Boolean verifyShippingInformation(){
+        return shippingInformation.isDisplayed();
+    }
+
+    public String getTax(){
+        return tax.getText();
+    }
+
+    public String sumTotal(){
+        return sumTotal.getText();
+    }
+
+    public void clickFinishButton(){
+        buttonFinish.isDisplayed();
+        buttonFinish.click();
+    }
+
 }
 
