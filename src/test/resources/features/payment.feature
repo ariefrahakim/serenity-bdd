@@ -13,4 +13,4 @@ Feature: Payment Feature
     And user click continue button
     Then the Checkout information page appear
     When User click finish button
-#    Then Checkout Complete Page appear
+    Then Checkout Complete Page appear

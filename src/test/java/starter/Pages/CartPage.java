@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +16,11 @@ public class CartPage extends PageObject {
 
     public static List<Double> priceProduct = new ArrayList<>();
 
+
     WebElement idProduct;
     WebElement differentIdProduct;
+
+    WebElement removeButton;
 
     @FindBy(xpath = "//*[@id=\"checkout\"]")
     WebElement Checkoutbutton;
@@ -41,5 +45,20 @@ public class CartPage extends PageObject {
 
     public void clickCheckoutButton(){
         Checkoutbutton.click();
+    }
+
+    public void clickRemoveButton(){
+        removeButton = getDriver().findElement(By.id("remove-"+ProductPage.nameProduct.replaceAll(" ", "-").toLowerCase()));
+        removeButton.click();
+    }
+
+    public void removeDifferentProduct(int z){
+        removeButton = getDriver().findElement(By.id("remove-"+ProductPage.differentProduct.get(z).replaceAll(" ", "-").toLowerCase()));
+        removeButton.click();
+    }
+
+    public void removeSelectedProduct(String name){
+        removeButton = getDriver().findElement(By.id("remove-"+name.replaceAll(" ", "-").toLowerCase()));
+        removeButton.click();
     }
 }
