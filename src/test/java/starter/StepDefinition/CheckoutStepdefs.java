@@ -6,10 +6,14 @@ import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import starter.Pages.CheckoutPage;
 import starter.Step.CheckoutStep;
+import starter.Step.CompleteStep;
 
 public class CheckoutStepdefs {
     @Steps
     CheckoutStep checkoutStep;
+
+    @Steps
+    CompleteStep completeStep;
 
     @Then("The your information page appear")
     public void theYourInformationPageAppear() {
@@ -53,10 +57,27 @@ public class CheckoutStepdefs {
     public void theCheckoutInformationPageAppear() {
         checkoutStep.getHeaderOverviewPage();
         checkoutStep.verifyCheckoutPage();
+        checkoutStep.verifySummaryPayment();
     }
 
     @Then("error massage appear on your information page")
     public void errorMassageAppearOnYourInformationPage() {
         checkoutStep.verifyErrorMassageInformation();
+    }
+
+
+    @And("User already on checkout page")
+    public void userAlreadyOnCheckoutPage() {
+        checkoutStep.verifyYourInformationPage();
+    }
+
+    @When("User click finish button")
+    public void userClickFinishButton() {
+        checkoutStep.clickFinishButton();
+    }
+
+    @Then("Checkout Complete Page appear")
+    public void checkoutCompletePageAppear() {
+        completeStep.headerDisplayed();
     }
 }

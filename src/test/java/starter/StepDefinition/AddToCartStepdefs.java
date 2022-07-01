@@ -99,4 +99,10 @@ public class AddToCartStepdefs {
     public void userAlreadyAddToCartSelectedDifferentProductWithName(String name) {
         addToCartStep.verifyCartDifProductPage(name);
     }
+
+    @And("User already click checkout button")
+    public void userAlreadyClickCheckoutButton() {
+        addToCartStep.clickCheckoutButton();
+    }
+
 }
