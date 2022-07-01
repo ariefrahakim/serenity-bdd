@@ -85,9 +85,9 @@ public class CheckoutStep {
         assertEquals(String.valueOf(expectedItemTotal), String.valueOf(actualItemTotal));
         assertTrue(checkoutPage.verifyShippingInformation());
         double tax = Double.parseDouble(checkoutPage.getTax().replaceAll("Tax: \\$", ""));
-        String sumTotal = checkoutPage.sumTotal().replaceAll("Total: \\$", "");
+        Double sumTotal = Double.parseDouble(checkoutPage.sumTotal().replaceAll("Total: \\$", ""));
         double expectedSumTotal = actualItemTotal + tax;
-        assertEquals(String.valueOf(expectedSumTotal), sumTotal);
+        assertEquals(String.format("%.2f", expectedSumTotal).replaceAll(",","."), String.valueOf(sumTotal));
     }
 
     @Step

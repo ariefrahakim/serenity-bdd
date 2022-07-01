@@ -5,6 +5,8 @@ import starter.Pages.CartPage;
 import starter.Pages.DetailProductPage;
 import starter.Pages.ProductPage;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AddToCartStep {
@@ -17,6 +19,11 @@ public class AddToCartStep {
     @Step
     public void openProductPage(){
         productPage.open();
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Step
